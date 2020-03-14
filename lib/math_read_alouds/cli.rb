@@ -1,0 +1,2 @@
+class MathReadAlouds::CLI
+end
