@@ -9,6 +9,7 @@ class MathReadAlouds::CLI
     list_topics
     get_user_topic
 
+
     
     # get_user_topic
     # get_books_for(topic)
@@ -31,8 +32,10 @@ class MathReadAlouds::CLI
   
   def get_user_topic
     chosen_topic = gets.chomp
-    topic = @math_topics[chosen_topic.to_i - 1]
-    if valid_input?(chosen_topic, @math_topics)
+    topic = @math_topics[chosen_topic.to_i - 1] unless chosen_topic == "exit"
+    if chosen_topic == "exit"
+      exit_program
+    elsif valid_input?(chosen_topic, @math_topics)
       display_books(topic)
     else
       puts "\nPlease input a valid number.\n"
@@ -78,18 +81,21 @@ class MathReadAlouds::CLI
     ## Can you do this with topic array
     
     index = selected_book.to_i - 1
-    topic.books[index].title
-    topic.books.select do |book| 
-      if book.name == selected_book
-        puts "TITLE: #{book.title}"
-        puts "AUTHOR: #{book.author}"
-        puts "DESCRIPTION: #{book.description}"
-        puts "PRICE(S): " ##You need to scrape from amazon
-        puts "     Kindle: "
-        puts "     Paperback: "
-        puts "     Hardback: "
-      end
-    end
+    puts "TITLE: #{topic.books[index].title}"
+    #puts "AUTHOR: #{topic.books[index].author}"
+    #puts "DESCRIPTION: #{topic.books[index].description}"
+    puts "PRICE(S): " ##You need to scrape from amazon
+    puts "     Kindle: "
+    puts "     Paperback: "
+    puts "     Hardback: "
+  end
+  
+  def exit_program
+    puts "Thank you for using Math Read Alouds!"
+  end
+  
+  def run
+    
   end
 
 end
