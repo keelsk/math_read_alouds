@@ -17,28 +17,35 @@ class MathReadAlouds::Scraper
   
   
   def self.scrape_books(topic)
-    url = @topic_url.select {|url| url.include?(topic.name)}
-    binding.pry
+    url = @topic_url.select {|url| url.include?(topic.name.downcase)}.join
     html = open('https://www.k-5mathteachingresources.com' + url)
-    binding.pry
-    MathReadAlouds::Book.new("How many?", topic)
-    MathReadAlouds::Book.new("Ten Dots", topic)
-  end
-  
-  
-  
-  def self.scrape_topic_url
-    topic_url = []
+    book_doc = Nokogiri::HTML(html)
     
-    html = open('https://www.k-5mathteachingresources.com/math-read-alouds.html') #Change this and move url to CLI class. Save it as base_url + unique part of url
-    doc = Nokogiri::HTML(html)
-    
-    doc.css("div#ContentWrapper div.ImageBlock.ImageBlockCenter").each do |content|
-      page_url = content.css("a").attribute("href").value.split('.com')[1]
-      topic_url << page_url
+    book_doc.css("div.responsive-row").each do |book|
+      description = book.css('div.responsive_col-3 p').text.strip 
+      if description.length > 30
+        title = book.css('h4 b').text
+        author = book.css('h4').text.split('by ')[1]
+        MathReadAlouds::Book.new(title, author, description)
+      end
     end
-    topic_url
+    binding.pry
   end
+  
+  
+  
+  # def self.scrape_topic_url
+  #   topic_url = []
+    
+  #   html = open('https://www.k-5mathteachingresources.com/math-read-alouds.html') #Change this and move url to CLI class. Save it as base_url + unique part of url
+  #   doc = Nokogiri::HTML(html)
+    
+  #   doc.css("div#ContentWrapper div.ImageBlock.ImageBlockCenter").each do |content|
+  #     page_url = content.css("a").attribute("href").value.split('.com')[1]
+  #     topic_url << page_url
+  #   end
+  #   topic_url
+  # end
   
   
   
