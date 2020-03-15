@@ -1,7 +1,3 @@
-require 'nokogiri'
-require 'open-uri'
-require 'pry'
-
 class MathReadAlouds::Scraper
   
   def self.scrape_topics_page

@@ -2,10 +2,10 @@ require 'pry'
 
 class MathReadAlouds::CLI
   
-  attr_accessor :scraper
-  
   def call
     puts "Welcome to Math Read Alouds! Choose a math topic to find literacy connections that can enhance your math instruction!"
+    MathReadAlouds::Scraper.new.scrape_topics_page
+    #get_books
     math_topics
     list_topics
     get_user_topic
@@ -44,10 +44,19 @@ class MathReadAlouds::CLI
     input.to_i > 0 && input.to_i <= data.length
   end
   
+  # def get_books
+  #   MathReadAlouds::Book.new("How Many?")
+  #   MathReadAlouds::Book.new("The Water Hole")
+  #   MathReadAlouds::Book.all
+  #   binding.pry
+  # end
+  
   def display_book_info(chosen_topic)
     index = chosen_topic.to_i - 1
     puts "The following books are related to #{@math_topics[index]}:"
-    
+    #Book.all.each_with_index(1) do |book|
+     # puts
+    #end
   end
 
 end
