@@ -92,6 +92,24 @@ class MathReadAlouds::CLI
     puts "     Kindle: "
     puts "     Paperback: "
     puts "     Hardback: "
+    puts " "
+    puts " "
+    
+    user_decision
+  end
+  
+  def user_decision
+    puts "Would you like to find another book? (y/n)"
+    input = gets.chomp.downcase
+    
+    if input == "y"
+      list_topics
+    elsif input == "n"
+      exit_program
+    else
+      puts "Please enter a valid answer."
+      user_decision
+    end
   end
   
   def exit_program
