@@ -43,5 +43,11 @@ class MathReadAlouds::CLI
   def valid_input?(input, data)
     input.to_i > 0 && input.to_i <= data.length
   end
+  
+  def display_book_info(chosen_topic)
+    index = chosen_topic.to_i - 1
+    puts "The following books are related to #{@math_topics[index]}:"
+    
+  end
 
 end
