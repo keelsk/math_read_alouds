@@ -3,8 +3,10 @@ class MathReadAlouds::Book
   attr_accessor :title, :author, :description, :link, :topic
   @@all = []
   
-  def initialize(title, topic)
+  def initialize(title, author, description, topic)
     @title = title
+    @author = author
+    @description = description
     @topic = topic
     add_to_topic
     save

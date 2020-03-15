@@ -26,7 +26,7 @@ class MathReadAlouds::Scraper
       if description.length > 30
         title = book.css('h4 b').text
         author = book.css('h4').text.split('by ')[1]
-        MathReadAlouds::Book.new(title, author, description)
+        MathReadAlouds::Book.new(title, author, description, topic)
       end
     end
     binding.pry

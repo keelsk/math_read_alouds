@@ -86,8 +86,8 @@ class MathReadAlouds::CLI
     
     index = selected_book.to_i - 1
     puts "TITLE: #{topic.books[index].title}"
-    #puts "AUTHOR: #{topic.books[index].author}"
-    #puts "DESCRIPTION: #{topic.books[index].description}"
+    puts "AUTHOR: #{topic.books[index].author}"
+    puts "DESCRIPTION: #{topic.books[index].description}"
     puts "PRICE(S): " ##You need to scrape from amazon
     puts "     Kindle: "
     puts "     Paperback: "
