@@ -9,6 +9,11 @@ class MathReadAlouds::Scraper
     end
   end
   
+  def self.scrape_books(topic)
+    MathReadAlouds::Book.new("How many?", topic)
+    MathReadAlouds::Book.new("Ten Dots", topic)
+  end
+  
   def self.scrape_topic_url
     topic_url = []
     

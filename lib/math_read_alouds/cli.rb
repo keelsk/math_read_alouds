@@ -51,8 +51,12 @@ class MathReadAlouds::CLI
   # end
   
   def display_book_info(chosen_topic)
-    index = chosen_topic.to_i - 1
-    puts "The following books are related to #{@math_topics[index].name}:"
+    topic = @math_topics[chosen_topic.to_i - 1]
+    topic.get_books
+    puts "The following books are related to #{topic.name}:"
+    topic.books.each.with_index(1) do |book, index|
+      puts "#{index}. #{book.title}"
+    end
     #Book.all.each_with_index(1) do |book|
      # puts
     #end

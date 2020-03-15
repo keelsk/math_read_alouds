@@ -1,10 +1,11 @@
 class MathReadAlouds::Topic
   @@all = []
   
-  attr_accessor :name
+  attr_accessor :name, :books
   
   def initialize(name)
     @name = name
+    @books = []
     save
   end
   
@@ -15,6 +16,10 @@ class MathReadAlouds::Topic
   
   def save 
     @@all << self
+  end
+  
+  def get_books
+    MathReadAlouds::Scraper.scrape_books(self) if @books.empty?
   end
     
 end
