@@ -1,4 +1,13 @@
 class MathReadAlouds::Scraper
+  def self.scrape_topics
+    html = open('https://www.k-5mathteachingresources.com/math-read-alouds.html')
+    doc = Nokogiri::HTML(html)
+    
+    doc.css('div#ContentWrapper div.ImageBlock.ImageBlockCenter').each do |content|
+      topic = content.css('img').attribute("title").value.split(' ')[0]
+      MathReadAlouds::Topic.new(topic)
+    end
+  end
   
   def self.scrape_topic_url
     topic_url = []

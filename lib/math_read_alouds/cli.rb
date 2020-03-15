@@ -4,7 +4,6 @@ class MathReadAlouds::CLI
   
   def call
     puts "Welcome to Math Read Alouds! Choose a math topic to find literacy connections that can enhance your math instruction!"
-    MathReadAlouds::Book.all
     #get_books
     math_topics
     list_topics
@@ -20,13 +19,13 @@ class MathReadAlouds::CLI
   end
   
   def math_topics
-    @math_topics = ['Counting', 'Addition', 'Subtraction', 'Multiplication', 'Division', 'Fractions', 'Geometry', 'Measurement']
+    @math_topics = MathReadAlouds::Topic.all
   end
   
   def list_topics
     puts "Type the number of the topic you would like to explore:"
     @math_topics.each_with_index do |topic, index|
-      puts "#{index + 1}. #{topic}"
+      puts "#{index + 1}. #{topic.name}"
     end
   end
   
@@ -53,7 +52,7 @@ class MathReadAlouds::CLI
   
   def display_book_info(chosen_topic)
     index = chosen_topic.to_i - 1
-    puts "The following books are related to #{@math_topics[index]}:"
+    puts "The following books are related to #{@math_topics[index].name}:"
     #Book.all.each_with_index(1) do |book|
      # puts
     #end
