@@ -4,7 +4,7 @@ class MathReadAlouds::CLI
   
   def call
     puts "Welcome to Math Read Alouds! Choose a math topic to find literacy connections that can enhance your math instruction!"
-    MathReadAlouds::Scraper.new.scrape_topics_page
+    MathReadAlouds::Book.all
     #get_books
     math_topics
     list_topics

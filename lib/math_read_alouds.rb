@@ -5,7 +5,7 @@ require_relative "./math_read_alouds/book"
 
 require 'pry'
 require 'nokogiri'
-
+require 'open-uri'
 
 module MathReadAlouds
   class Error < StandardError; end
