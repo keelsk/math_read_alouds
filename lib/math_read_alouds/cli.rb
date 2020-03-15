@@ -60,13 +60,17 @@ class MathReadAlouds::CLI
     topic.books.each.with_index(1) do |book, index|
       puts "#{index}. #{book.title}"
     end
-    
+    puts "Please select the book you are interested in. Type 'back' to return to previous menu or type 'exit' to leave this program."
     get_selected_book(topic)
   end
   
   def get_selected_book(topic)
     selected_book = gets.chomp
-    if valid_input?(selected_book, topic.books)
+    if selected_book == "exit"
+      exit_program
+    elsif selected_book == "back"
+      display_books(topic)
+    elsif valid_input?(selected_book, topic.books)
       display_book_info(topic, selected_book)
     else
       puts "\nPlease input a valid number.\n"
