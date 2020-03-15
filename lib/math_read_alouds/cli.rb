@@ -25,8 +25,8 @@ class MathReadAlouds::CLI
   
   def list_topics
     puts "Type the number of the topic you would like to explore:"
-    @math_topics.each_with_index do |topic, index|
-      puts "#{index + 1}. #{topic.name}"
+    @math_topics.each.with_index(1) do |topic, index|
+      puts "#{index}. #{topic.name}"
     end
   end
   
@@ -103,7 +103,7 @@ class MathReadAlouds::CLI
     input = gets.chomp.downcase
     
     if input == "y"
-      list_topics
+      call
     elsif input == "n"
       exit_program
     else
