@@ -27,13 +27,15 @@ class MathReadAlouds::Scraper
     book_doc.css("div.responsive-row").each do |book|
       description = book.css('div.responsive_col-3 p').text.strip 
       if description.length > 30
-        book_info[:title] = book.css('h4 b').text
-        book_info[:author] = book.css('h4').text.split('by ')[1]
-        book_info[:description] = description
-        book_data << book_info 
+        title = book.css('h4 b').text
+        author = book.css('h4').text.split('by ')[1]
+        
+        book_info = {:title => title, :author => author, :description => description}
+        book_data << book_info
       end
     end
     book_data
+    binding.pry
   end
   
   def self.scrape_book_url(book_url)

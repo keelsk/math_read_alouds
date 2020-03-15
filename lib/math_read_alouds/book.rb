@@ -9,7 +9,8 @@ class MathReadAlouds::Book
   end
   
   def self.all
-    MathReadAlouds::Scraper.scrape_topic_url if @@all.empty?
+    MathReadAlouds::Scraper.scrape_read_alouds('https://www.k-5mathteachingresources.com/counting-books.html') if @@all.empty?
+    #MathReadAlouds::Scraper.scrape_topic_url if @@all.empty?
     #MathReadAlouds::Scraper.scrape_books if @@all.empty?
     @@all
   end
