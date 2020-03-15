@@ -9,10 +9,14 @@ class MathReadAlouds::Scraper
     end
   end
   
+  
+  
   def self.scrape_books(topic)
     MathReadAlouds::Book.new("How many?", topic)
     MathReadAlouds::Book.new("Ten Dots", topic)
   end
+  
+  
   
   def self.scrape_topic_url
     topic_url = []
@@ -29,6 +33,8 @@ class MathReadAlouds::Scraper
     topic_url
   end
   
+  
+  
   def self.scrape_read_alouds(topic_url)
     book_html = open(topic_url)
     book_doc = Nokogiri::HTML(book_html)
@@ -44,17 +50,26 @@ class MathReadAlouds::Scraper
         title = book.css('h4 b').text
         author = book.css('h4').text.split('by ')[1]
         
-        book_info = {:title => title, :author => author, :description => description}
-        book_data << book_info
+        MathReadAlouds::Book.new(title, author, description)
+        
+        
+        #book_info = {:title => title, :author => author, :description => description}
+        #book_data << book_info
       end
     end
     book_data
     binding.pry
   end
   
+  
+  
+  
   def self.scrape_book_url(book_url)
     
   end
+  
+  
+  
   
   def self.scrape_prices(amazon_url)
   end

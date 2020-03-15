@@ -31,8 +31,9 @@ class MathReadAlouds::CLI
   
   def get_user_topic
     chosen_topic = gets.chomp
+    topic = @math_topics[chosen_topic.to_i - 1]
     if valid_input?(chosen_topic, @math_topics)
-      display_books(chosen_topic)
+      display_books(topic)
     else
       puts "\nPlease input a valid number.\n"
       get_user_topic
@@ -50,8 +51,7 @@ class MathReadAlouds::CLI
   #   binding.pry
   # end
   
-  def display_books(chosen_topic)
-    topic = @math_topics[chosen_topic.to_i - 1]
+  def display_books(topic)
     topic.get_books
     puts "The following books are related to #{topic.name}:"
     topic.books.each.with_index(1) do |book, index|
@@ -64,14 +64,30 @@ class MathReadAlouds::CLI
   def get_selected_book(topic)
     selected_book = gets.chomp
     if valid_input?(selected_book, topic.books)
-      display_book_info(selected_book)
+      display_book_info(topic, selected_book)
     else
       puts "\nPlease input a valid number.\n"
       get_selected_book(topic)
     end
   end
   
-  def display_book_info(selected_book)
+  
+  
+  def display_book_info(topic, selected_book)
+    ## you have to change the selected_book from a number to the name of the book.
+    ## Can you do this with topic array
+    
+    topic.books.select do |book| 
+      if book.name == selected_book
+        puts "TITLE: #{book.title}"
+        puts "AUTHOR: #{book.author}"
+        puts "DESCRIPTION: #{book.description}"
+        puts "PRICE(S): " ##You need to scrape from amazon
+        puts "     Kindle: "
+        puts "     Paperback: "
+        puts "     Hardback: "
+      end
+    end
   end
 
 end
