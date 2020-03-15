@@ -24,15 +24,24 @@ class MathReadAlouds::CLI
   end
   
   def list_topics
+    puts "Type the number of the topic you would like to explore:"
     @math_topics.each_with_index do |topic, index|
       puts "#{index + 1}. #{topic}"
     end
   end
   
   def get_user_topic
-    puts "Type the number of the topic you would like to explore:"
-    @input = gets.chomp
+    chosen_topic = gets.chomp
+    if valid_input?(chosen_topic, @math_topics)
+      display_book_info(chosen_topic)
+    else
+      puts "\nPlease input a valid number.\n"
+      get_user_topic
+    end
   end
   
-  
+  def valid_input?(input, data)
+    input.to_i > 0 && input.to_i <= data.length
+  end
+
 end
