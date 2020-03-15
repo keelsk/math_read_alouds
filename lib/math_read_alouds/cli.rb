@@ -77,6 +77,8 @@ class MathReadAlouds::CLI
     ## you have to change the selected_book from a number to the name of the book.
     ## Can you do this with topic array
     
+    index = selected_book.to_i - 1
+    topic.books[index].title
     topic.books.select do |book| 
       if book.name == selected_book
         puts "TITLE: #{book.title}"
