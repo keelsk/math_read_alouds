@@ -6,8 +6,10 @@ class MathReadAlouds::CLI
   
   def call
     puts "Welcome to Math Read Alouds! Choose a math topic to find literacy connections that can enhance your math instruction!"
-    
+    math_topics
     list_topics
+    get_user_topic
+
     
     # get_user_topic
     # get_books_for(topic)
@@ -17,10 +19,12 @@ class MathReadAlouds::CLI
     #new = MathReadAlouds::Scraper.new.scrape_topics_page
   end
   
+  def math_topics
+    @math_topics = ['Counting', 'Addition', 'Subtraction', 'Multiplication', 'Division', 'Fractions', 'Geometry', 'Measurement']
+  end
+  
   def list_topics
-    math_topics = ['Counting', 'Addition', 'Subtraction', 'Multiplication', 'Division', 'Fractions', 'Geometry', 'Measurement']
-    puts "Type the number of the topic you need literacy connections for:"
-    math_topics.each_with_index do |topic, index|
+    @math_topics.each_with_index do |topic, index|
       puts "#{index + 1}. #{topic}"
     end
   end
