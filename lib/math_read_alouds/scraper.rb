@@ -27,6 +27,7 @@ class MathReadAlouds::Scraper
         
         
         author = book.css('span').first.text.split('by')[1]
+        
         if author == nil
           author = book.css('h4').text.split('by')[1].strip
         else
