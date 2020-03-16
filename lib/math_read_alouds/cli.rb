@@ -4,19 +4,9 @@ class MathReadAlouds::CLI
   
   def call
     puts "Welcome to Math Read Alouds! Choose a math topic to find literacy connections that can enhance your math instruction!"
-    #get_books
     math_topics
     list_topics
     get_user_topic
-
-
-    
-    # get_user_topic
-    # get_books_for(topic)
-    # display_books
-    # get_selected_book
-    # display_book_info(selected_book)
-    #new = MathReadAlouds::Scraper.new.scrape_topics_page
   end
   
   def math_topics
@@ -31,6 +21,7 @@ class MathReadAlouds::CLI
   end
   
   def get_user_topic
+    puts "Enter a book number or type 'exit' to leave this program."
     chosen_topic = gets.chomp
     topic = @math_topics[chosen_topic.to_i - 1] unless chosen_topic == "exit"
     if chosen_topic == "exit"
@@ -81,9 +72,6 @@ class MathReadAlouds::CLI
   
   
   def display_book_info(topic, selected_book)
-    ## you have to change the selected_book from a number to the name of the book.
-    ## Can you do this with topic array
-    
     index = selected_book.to_i - 1
     puts "TITLE: #{topic.books[index].title}"
     puts "AUTHOR: #{topic.books[index].author}"
@@ -97,6 +85,8 @@ class MathReadAlouds::CLI
     
     user_decision
   end
+  
+  
   
   def user_decision
     puts "Would you like to find another book? (y/n)"
@@ -114,10 +104,6 @@ class MathReadAlouds::CLI
   
   def exit_program
     puts "Thank you for using Math Read Alouds!"
-  end
-  
-  def run
-    
   end
 
 end
