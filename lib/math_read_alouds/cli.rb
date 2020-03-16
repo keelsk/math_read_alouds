@@ -6,7 +6,7 @@ class MathReadAlouds::CLI
     puts "Welcome to Math Read Alouds! Choose a math topic to find literacy connections that can enhance your math instruction!"
     math_topics
     list_topics
-    get_user_topic
+
   end
   
   def math_topics
@@ -18,6 +18,7 @@ class MathReadAlouds::CLI
     @math_topics.each.with_index(1) do |topic, index|
       puts "#{index}. #{topic.name}"
     end
+    get_user_topic
   end
   
   def get_user_topic
@@ -53,7 +54,7 @@ class MathReadAlouds::CLI
     if selected_book == "exit"
       exit_program
     elsif selected_book == "back"
-      display_books(topic)
+      list_topics
     elsif valid_input?(selected_book, topic.books)
       display_book_info(topic, selected_book)
     else
