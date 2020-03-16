@@ -38,13 +38,6 @@ class MathReadAlouds::CLI
     input.to_i > 0 && input.to_i <= data.length
   end
   
-  # def get_books
-  #   MathReadAlouds::Book.new("How Many?")
-  #   MathReadAlouds::Book.new("The Water Hole")
-  #   MathReadAlouds::Book.all
-  #   binding.pry
-  # end
-  
   def display_books(topic)
     topic.get_books
     puts "The following books are related to #{topic.name}:"
@@ -69,24 +62,13 @@ class MathReadAlouds::CLI
     end
   end
   
-  
-  
   def display_book_info(topic, selected_book)
     index = selected_book.to_i - 1
     puts "TITLE: #{topic.books[index].title}"
     puts "AUTHOR: #{topic.books[index].author}"
     puts "DESCRIPTION: #{topic.books[index].description}"
-    puts "PRICE(S): " ##You need to scrape from amazon
-    puts "     Kindle: "
-    puts "     Paperback: "
-    puts "     Hardback: "
-    puts " "
-    puts " "
-    
     user_decision
   end
-  
-  
   
   def user_decision
     puts "Would you like to find another book? (y/n)"
