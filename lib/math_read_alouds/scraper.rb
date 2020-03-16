@@ -22,7 +22,7 @@ class MathReadAlouds::Scraper
       description = book.css('div.responsive_col-3 p').text.strip 
       if description.length > 30
         title = book.css('span b').text
-        author = book.css('span').text.split('by ')[1]
+        author = book.css('span').first.text.split('by ')[1]
         MathReadAlouds::Book.new(title, author, description, topic)
       end
     end
