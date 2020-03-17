@@ -7,6 +7,7 @@ require_relative "./math_read_alouds/topic"
 require 'pry'
 require 'nokogiri'
 require 'open-uri'
+require 'colorize'
 
 module MathReadAlouds
   class Error < StandardError; end
