@@ -24,10 +24,10 @@ class MathReadAlouds::CLI
     puts "Enter a ".green + "TOPIC NUMBER ".red + "or type ".green +  "'EXIT' ".red +  "to leave this program.".green
     chosen_topic = gets.chomp
     chosen_topic = chosen_topic.downcase
-    topic = @math_topics[chosen_topic.to_i - 1] unless chosen_topic == "exit"
     if chosen_topic == "exit"
       exit_program
     elsif valid_input?(chosen_topic, @math_topics)
+      topic = @math_topics[chosen_topic.to_i - 1]
       display_books(topic)
     else
       puts "Please input a valid number.\n".green
