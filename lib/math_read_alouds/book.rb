@@ -1,6 +1,6 @@
 class MathReadAlouds::Book
   
-  attr_accessor :title, :author, :description, :link, :topic
+  attr_accessor :title, :author, :description, :topic
   @@all = []
   
   def initialize(title, author, description, topic)
