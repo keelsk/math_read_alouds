@@ -69,11 +69,12 @@ class MathReadAlouds::CLI
     puts "TITLE:".red.bold + " #{topic.books[index].title}"
     puts "AUTHOR:".red.bold + " #{topic.books[index].author}"
     puts "DESCRIPTION:".red.bold + " #{topic.books[index].description}"
+    puts " "
     user_decision
   end
   
   def user_decision
-    puts "Would you like to find another book? (y/n)"
+    puts "Would you like to find another book? (y/n)".green
     input = gets.chomp.downcase
     
     if input == "y"
